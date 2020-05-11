@@ -1,0 +1,314 @@
+{
+  "select": [
+    {
+      "label": "Construction d'un notice unique (échec : aucun docObjects n'a été trouvé)",
+      "arguments": {
+        "docObjects": [],
+        "rules": {
+          "priorities": [
+            "hal",
+            "crossref",
+            "pubmed",
+            "sudoc"
+          ],
+          "keys": {
+            "abstract.fr": [
+              "crossref",
+              "pubmed",
+              "sudoc"
+            ],
+            "abstract.en": [
+              "pubmed",
+              "sudoc"
+            ]
+          }
+        }
+      },
+      "result": {
+        "equal": "docObjects not found"
+      }
+    },
+    {
+      "label": "Construction d'un notice unique (échec : aucun docObjects ayant une source n'a été trouvé)",
+      "arguments": {
+        "docObjects": [
+          {
+            "authors": [
+              "authors.custom.1",
+              "authors.custom.2"
+            ],
+            "abstract": {
+              "fr": "abstract.custom.fr",
+              "en": "abstract.custom.en"
+            }
+          }
+        ],
+        "rules": {
+          "priorities": [
+            "hal",
+            "crossref",
+            "pubmed",
+            "sudoc"
+          ],
+          "keys": {
+            "abstract.fr": [
+              "crossref",
+              "pubmed",
+              "sudoc"
+            ],
+            "abstract.en": [
+              "pubmed",
+              "sudoc"
+            ]
+          }
+        }
+      },
+      "result": {
+        "equal": "docObjects with source not found"
+      }
+    },
+    {
+      "label": "Construction d'un notice unique (échec : aucun docObjects corerspondant à une source n'a été trouvé)",
+      "arguments": {
+        "docObjects": [
+          {
+            "source": "custom",
+            "authors": [
+              "authors.custom.1",
+              "authors.custom.2"
+            ],
+            "abstract": {
+              "fr": "abstract.custom.fr",
+              "en": "abstract.custom.en"
+            }
+          }
+        ],
+        "rules": {
+          "priorities": [
+            "hal",
+            "crossref",
+            "pubmed",
+            "sudoc"
+          ],
+          "keys": {
+            "abstract.fr": [
+              "crossref",
+              "pubmed",
+              "sudoc"
+            ],
+            "abstract.en": [
+              "pubmed",
+              "sudoc"
+            ]
+          }
+        }
+      },
+      "result": {
+        "equal": "docObject corresponding to one of given sources not found"
+      }
+    },
+    {
+      "label": "Construction d'un notice unique (échec : aucune priorisation des sources n'a été trouvée)",
+      "arguments": {
+        "docObjects": [
+          {
+            "source": "hal",
+            "authors": [
+              "authors.hal.1",
+              "authors.hal.2"
+            ],
+            "abstract": {
+              "fr": "abstract.hal.fr",
+              "en": "abstract.hal.en"
+            }
+          },
+          {
+            "source": "crossref",
+            "authors": [
+              "authors.crossref.1",
+              "authors.crossref.2"
+            ],
+            "abstract": {
+              "fr": "abstract.crossref.fr",
+              "en": "abstract.crossref.en"
+            }
+          },
+          {
+            "source": "pubmed",
+            "authors": [
+              "authors.pubmed.1",
+              "authors.pubmed.2"
+            ],
+            "abstract": {
+              "fr": "abstract.pubmed.fr",
+              "en": "abstract.pubmed.en"
+            }
+          },
+          {
+            "source": "sudoc",
+            "authors": [
+              "authors.sudoc.1",
+              "authors.sudoc.2"
+            ],
+            "abstract": {
+              "fr": "abstract.sudoc.fr",
+              "en": "abstract.sudoc.en"
+            }
+          }
+        ],
+        "rules": {
+          "priorities": [],
+          "keys": {
+            "abstract.fr": [
+              "crossref",
+              "pubmed",
+              "sudoc"
+            ],
+            "abstract.en": [
+              "pubmed",
+              "sudoc"
+            ]
+          }
+        }
+      },
+      "result": {
+        "equal": "priorities not found"
+      }
+    },
+    {
+      "label": "Construction d'un notice unique (succès : priorisation globale)",
+      "arguments": {
+        "docObjects": [
+          {
+            "source": "hal",
+            "authors": [
+              "authors.hal.1",
+              "authors.hal.2"
+            ],
+            "abstract": {
+              "fr": "abstract.hal.fr",
+              "en": "abstract.hal.en"
+            }
+          },
+          {
+            "source": "crossref",
+            "authors": [
+              "authors.crossref.1",
+              "authors.crossref.2"
+            ],
+            "abstract": {
+              "fr": "abstract.crossref.fr",
+              "en": "abstract.crossref.en"
+            }
+          },
+          {
+            "source": "pubmed",
+            "authors": [
+              "authors.pubmed.1",
+              "authors.pubmed.2"
+            ],
+            "abstract": {
+              "fr": "abstract.pubmed.fr",
+              "en": "abstract.pubmed.en"
+            }
+          },
+          {
+            "source": "sudoc",
+            "authors": [
+              "authors.sudoc.1",
+              "authors.sudoc.2"
+            ],
+            "abstract": {
+              "fr": "abstract.sudoc.fr",
+              "en": "abstract.sudoc.en"
+            }
+          }
+        ],
+        "rules": {
+          "priorities": [
+            "hal",
+            "crossref",
+            "pubmed",
+            "sudoc"
+          ]
+        }
+      },
+      "result": {
+        "equal": "{\"source\":\"hal\",\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.hal.en\"}}"
+      }
+    },
+    {
+      "label": "Construction d'un notice unique (succès : priorisation globale + personnalisée)",
+      "arguments": {
+        "docObjects": [
+          {
+            "source": "hal",
+            "authors": [
+              "authors.hal.1",
+              "authors.hal.2"
+            ],
+            "abstract": {
+              "fr": "abstract.hal.fr",
+              "en": "abstract.hal.en"
+            }
+          },
+          {
+            "source": "crossref",
+            "authors": [
+              "authors.crossref.1",
+              "authors.crossref.2"
+            ],
+            "abstract": {
+              "fr": "abstract.crossref.fr",
+              "en": "abstract.crossref.en"
+            }
+          },
+          {
+            "source": "pubmed",
+            "authors": [
+              "authors.pubmed.1",
+              "authors.pubmed.2"
+            ],
+            "abstract": {
+              "fr": "abstract.pubmed.fr",
+              "en": "abstract.pubmed.en"
+            }
+          },
+          {
+            "source": "sudoc",
+            "authors": [
+              "authors.sudoc.1",
+              "authors.sudoc.2"
+            ],
+            "abstract": {
+              "fr": "abstract.sudoc.fr",
+              "en": "abstract.sudoc.en"
+            }
+          }
+        ],
+        "rules": {
+          "priorities": [
+            "hal",
+            "crossref",
+            "pubmed",
+            "sudoc"
+          ],
+          "keys": {
+            "abstract.fr": [
+              "crossref",
+              "pubmed",
+              "sudoc"
+            ],
+            "abstract.en": [
+              "pubmed",
+              "sudoc"
+            ]
+          }
+        }
+      },
+      "result": {
+        "equal": "{\"source\":\"hal\",\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"abstract\":{\"fr\":\"abstract.crossref.fr\",\"en\":\"abstract.pubmed.en\"}}"
+      }
+    }
+  ]
+}

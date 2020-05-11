@@ -1,0 +1,20 @@
+{
+  "name": "co-reference",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -t 120000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/conditor-project/co-reference.git"
+  },
+  "author": "INIST",
+  "license": "SEE LICENCE IN License.txt",
+  "dependencies": {
+    "auto-tu": "^2.0.1",
+    "lodash": "^4.17.15",
+    "mocha": "^7.1.2"
+  }
+}
