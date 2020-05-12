@@ -11,6 +11,7 @@ const business = {};
 
 business.select = function (docObjects, rules = defaultRules) {
   let data = {},
+    sources = {},
     result = undefined;
   if (Array.isArray(docObjects) && docObjects.length > 0) {
     for (let i = 0; i < docObjects.length; i++) {
@@ -24,6 +25,7 @@ business.select = function (docObjects, rules = defaultRules) {
     for (let i = 0; i < rules.priorities.length; i++) {
       if (typeof data[rules.priorities[i]] !== "undefined") {
         result = data[rules.priorities[i]];
+        sources[rules.priorities[i]] = true;
         break;
       }
     }
@@ -38,10 +40,12 @@ business.select = function (docObjects, rules = defaultRules) {
             value = _.get(data[source], key, undefined);
           if (typeof value !== "undefined") {
             _.set(result, key, value);
+            sources[source] = true;
             break;
           }
         }
     }
+  result.source = Object.keys(sources);
   return { err: false, msg: "success", res: result };
 };
 

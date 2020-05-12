@@ -234,7 +234,7 @@
         }
       },
       "result": {
-        "equal": "{\"source\":\"hal\",\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.hal.en\"}}"
+        "equal": "{\"source\":[\"hal\"],\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.hal.en\"}}"
       }
     },
     {
@@ -307,7 +307,7 @@
         }
       },
       "result": {
-        "equal": "{\"source\":\"hal\",\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"abstract\":{\"fr\":\"abstract.crossref.fr\",\"en\":\"abstract.pubmed.en\"}}"
+        "equal": "{\"source\":[\"hal\",\"crossref\",\"pubmed\"],\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"abstract\":{\"fr\":\"abstract.crossref.fr\",\"en\":\"abstract.pubmed.en\"}}"
       }
     }
   ]
