@@ -12,6 +12,7 @@
             "sudoc"
           ],
           "keys": {
+            "authors": [],
             "abstract.fr": [
               "crossref",
               "pubmed",
@@ -51,6 +52,7 @@
             "sudoc"
           ],
           "keys": {
+            "authors": [],
             "abstract.fr": [
               "crossref",
               "pubmed",
@@ -91,6 +93,7 @@
             "sudoc"
           ],
           "keys": {
+            "authors": [],
             "abstract.fr": [
               "crossref",
               "pubmed",
@@ -159,6 +162,7 @@
         "rules": {
           "priorities": [],
           "keys": {
+            "authors": [],
             "abstract.fr": [
               "crossref",
               "pubmed",
@@ -230,11 +234,16 @@
             "crossref",
             "pubmed",
             "sudoc"
-          ]
+          ],
+          "keys": {
+            "authors": [],
+            "abstract.fr": [],
+            "abctract.en": []
+          }
         }
       },
       "result": {
-        "equal": "{\"source\":[\"hal\"],\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.hal.en\"}}"
+        "equal": "{\"source\":\"hal\",\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.hal.en\"},\"origins\":{\"authors\":\"hal\",\"abstract.fr\":\"hal\",\"abctract.en\":\"hal\",\"sources\":[\"hal\"]}}"
       }
     },
     {
@@ -294,6 +303,7 @@
             "sudoc"
           ],
           "keys": {
+            "authors": [],
             "abstract.fr": [
               "crossref",
               "pubmed",
@@ -307,7 +317,78 @@
         }
       },
       "result": {
-        "equal": "{\"source\":[\"hal\",\"crossref\",\"pubmed\"],\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"abstract\":{\"fr\":\"abstract.crossref.fr\",\"en\":\"abstract.pubmed.en\"}}"
+        "equal": "{\"source\":\"hal\",\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"abstract\":{\"fr\":\"abstract.crossref.fr\",\"en\":\"abstract.pubmed.en\"},\"origins\":{\"authors\":\"hal\",\"abstract.fr\":\"crossref\",\"abstract.en\":\"pubmed\",\"sources\":[\"hal\",\"crossref\",\"pubmed\"]}}"
+      }
+    },
+    {
+      "label": "Construction d'un notice unique (succès : priorisation globale + personnalisée & absence de donnée)",
+      "arguments": {
+        "docObjects": [
+          {
+            "source": "hal",
+            "authors": [],
+            "abstract": {
+              "fr": "abstract.hal.fr",
+              "en": "abstract.hal.en"
+            }
+          },
+          {
+            "source": "crossref",
+            "authors": [
+              "authors.crossref.1",
+              "authors.crossref.2"
+            ],
+            "abstract": {
+              "fr": "abstract.crossref.fr",
+              "en": "abstract.crossref.en"
+            }
+          },
+          {
+            "source": "pubmed",
+            "authors": [
+              "authors.pubmed.1",
+              "authors.pubmed.2"
+            ],
+            "abstract": {
+              "fr": "abstract.pubmed.fr",
+              "en": "abstract.pubmed.en"
+            }
+          },
+          {
+            "source": "sudoc",
+            "authors": [
+              "authors.sudoc.1",
+              "authors.sudoc.2"
+            ],
+            "abstract": {
+              "fr": "abstract.sudoc.fr",
+              "en": "abstract.sudoc.en"
+            }
+          }
+        ],
+        "rules": {
+          "priorities": [
+            "hal",
+            "crossref",
+            "pubmed",
+            "sudoc"
+          ],
+          "keys": {
+            "authors": [],
+            "abstract.fr": [
+              "crossref",
+              "pubmed",
+              "sudoc"
+            ],
+            "abstract.en": [
+              "pubmed",
+              "sudoc"
+            ]
+          }
+        }
+      },
+      "result": {
+        "equal": "{\"source\":\"hal\",\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"abstract\":{\"fr\":\"abstract.crossref.fr\",\"en\":\"abstract.pubmed.en\"},\"origins\":{\"authors\":\"crossref\",\"abstract.fr\":\"crossref\",\"abstract.en\":\"pubmed\",\"sources\":[\"hal\",\"crossref\",\"pubmed\"]}}"
       }
     }
   ]

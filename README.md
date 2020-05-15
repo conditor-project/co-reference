@@ -71,10 +71,7 @@ Je dispose de la liste des documents suivants :
 [
   {
     "source": "hal",
-    "authors": [
-      "authors.hal.1",
-      "authors.hal.2"
-    ],
+    "authors": [],
     "abstract": {
       "fr": "abstract.hal.fr",
       "en": "abstract.hal.en"
@@ -135,6 +132,7 @@ Je construit donc le fichier JSON suivant :
     "sudoc"
   ],
   "keys": {
+    "authors": [],
     "abstract.fr": [
       "crossref",
       "pubmed",
@@ -152,16 +150,27 @@ J'obtiendrais le résultat suivant :
 
 ```json
 {
-  "source": ["hal","crossref","pubmed"],
+  "source": "hal",
   "authors": [
-    "authors.hal.1",
-    "authors.hal.2"
+    "authors.crossref.1",
+    "authors.crossref.2"
   ],
   "abstract": {
     "fr": "abstract.crossref.fr",
     "en":"abstract.pubmed.en"
+  },
+  "origins": {
+    "authors":"crossref",
+    "abstract.fr":"crossref",
+    "abstract.en":"pubmed",
+    "sources":["hal","crossref","pubmed"]
   }
 }
 ```
 
-**Note : La propriété "source" de la notice de référence (ou notice unique) a été modifiée pour contenir les différentes sources**
+Notes :
+
+- La propriéte "source" renseigne la source de départ
+- La propriéte "origins" renseigne la source pour chaque propriété modifiée par co-reference
+- La propriété "origins.sources" contient les différentes sources utilisées pour la création de la notice de référence (ou notice unique)
+- En cas d'absence de données (ici : authors), le module vérifiera la présence de données dans les autres sources (selon les priorités définie).

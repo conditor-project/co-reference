@@ -12,6 +12,7 @@ const business = {};
 business.select = function (docObjects, rules = defaultRules) {
   let data = {},
     sources = {},
+    properties = {},
     result = undefined;
   if (Array.isArray(docObjects) && docObjects.length > 0) {
     for (let i = 0; i < docObjects.length; i++) {
@@ -34,19 +35,31 @@ business.select = function (docObjects, rules = defaultRules) {
   } else return { err: true, msg: "priorities not found", res: result };
   if (typeof rules.keys === "object")
     for (let key in rules.keys) {
-      if (Array.isArray(rules.keys[key]) && rules.keys[key].length > 0)
-        for (let i = 0; i < rules.keys[key].length; i++) {
-          let source = rules.keys[key][i],
-            value = _.get(data[source], key, undefined);
-          if (typeof value !== "undefined") {
-            _.set(result, key, value);
-            sources[source] = true;
-            break;
-          }
+      let currentRules = rules.priorities;
+      properties[key] = currentRules[0];
+      if (Array.isArray(rules.keys[key]) && rules.keys[key].length > 0) currentRules = rules.keys[key];
+      for (let i = 0; i < currentRules.length; i++) {
+        let source = currentRules[i],
+          value = _.get(data[source], key, undefined);
+        if (typeof value !== "undefined" && !business.isEmpty(value)) {
+          _.set(result, key, value);
+          sources[source] = true;
+          properties[key] = source;
+          break;
         }
+      }
     }
-  result.source = Object.keys(sources);
+  properties.sources = Object.keys(sources);
+  result.origins = properties;
   return { err: false, msg: "success", res: result };
+};
+
+business.isEmpty = function (data) {
+  if (typeof data !== "undefined") {
+    if (Array.isArray(data) || typeof data === "string") return data.length <= 0;
+    else if (typeof data === "object") return Object.keys(data).length <= 0;
+    else return false;
+  } else return true;
 };
 
 /* TO DO : merge data from multiples source */
