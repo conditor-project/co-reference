@@ -10,7 +10,7 @@ const pkg = require("../package.json"),
 
 // Test data
 const dataset = {
-  business: require("./dataset/in/data/business.json"),
+  business: require("./dataset/in/data/business.json")
 };
 
 // Map of functions used in test
@@ -22,17 +22,17 @@ const wrapper = {};
  */
 wrapper.business = {
   select: function (fn, item, cb) {
-    let select = fn(item.arguments.docObjects, item.arguments.rules);
+    let select = fn(item.arguments.docObjects, item.arguments.rules, item.arguments.isConditor);
     if (select.err) return cb(select.msg);
     else return cb(JSON.stringify(select.res));
-  },
+  }
 };
 
 // Tested Objects
 const myObject = {
   business: {
-    select: business.select,
-  },
+    select: business.select
+  }
 };
 
 /**
@@ -43,5 +43,5 @@ TU.start({
   root: "co-reference",
   object: myObject,
   wrapper: wrapper,
-  dataset: dataset,
+  dataset: dataset
 });

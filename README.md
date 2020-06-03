@@ -10,9 +10,35 @@ npm i --save co-reference
 
 ## Prérequis ##
 
-Disposer d'un fichier JSON s'inspirant du fichier [rules.default.json](https://github.com/conditor-project/co-reference/blob/master/rules.default.json).
+Remplir le fichier [resources/mapping.json](https://github.com/conditor-project/co-reference/blob/master/resources/mapping.json).
 
-La structure de ce fichier sera la suivante :
+La structure de ce fichier est la suivante :
+
+```json
+{
+  "fingerprint": false,
+  "idConditor": false,
+  "sourceId": false,
+  "sourceUid": false,
+  ...
+  "title": true,
+  "title.default": true,
+  "title.fr": true,
+  "title.en": true,
+  "title.meeting": true,
+  "title.monography": true,
+  "title.journal": true,
+  ...
+  "hasFulltext": false,
+  "fulltextPath": false
+}
+```
+
+Ce fichier permet de renseigner quel(s) champ(s) serotn ou non présent dans la notice de référence générée.
+
+Remplir les fichiers JSON contenant les règles de priorités (en s'inspirant du fichier [rules/default.json](https://github.com/conditor-project/co-reference/blob/master/rules/default.json)).
+
+La structure de ce fichier est la suivante :
 
 ```json
 {
@@ -61,6 +87,9 @@ const reference = require("co-reference"),
   docObjects = [{...}, {...}, ...]; // Liste des mes docObjects.
 
 const myNoticeUnique = reference.select(docObjects, myRules); // Retourne un objet JSON
+
+// Avec le 3ème paramètre à false (true par défaut), aucune vérification ne sera faite sur le texte intégral des documents hal 
+const myNoticeUnique = reference.select(docObjects, myRules, false); // Retourne un objet JSON
 ```
 
 ## Exemple ##
@@ -136,11 +165,14 @@ Je construit donc le fichier JSON suivant :
     "abstract.fr": [
       "crossref",
       "pubmed",
-      "sudoc"
+      "sudoc",
+      "hal"
     ],
     "abstract.en": [
       "pubmed",
-      "sudoc"
+      "sudoc",
+      "crossref",
+      "hal"
     ]
   }
 }

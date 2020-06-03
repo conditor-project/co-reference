@@ -1,9 +1,9 @@
 {
   "priorities": [
+    "sudoc",
     "hal",
     "crossref",
-    "pubmed",
-    "sudoc"
+    "pubmed"
   ],
   "keys": {
     "fingerprint": [],
@@ -17,7 +17,7 @@
     "first3AuthorNamesWithInitials": [],
     "authorNames": [],
     "authors": [],
-    "doi": ["crossref", "hal"],
+    "doi": [],
     "pii": [],
     "hasDoi": [],
     "idHal": [],
@@ -29,19 +29,39 @@
     "viaf": [],
     "arxiv": [],
     "pmId": [],
-    "nnt": ["hal"],
+    "nnt": [],
     "patentNumber": [],
     "utKey": [],
-    "issn": ["crossref"],
-    "eissn": ["crossref"],
-    "xissn": ["crossref"],
-    "isbn": ["crossref"],
+    "issn": [
+      "sudoc",
+      "crossref",
+      "hal",
+      "pubmed"
+    ],
+    "eissn": [
+      "sudoc",
+      "crossref",
+      "hal",
+      "pubmed"
+    ],
+    "xissn": [],
+    "isbn": [
+      "sudoc",
+      "crossref",
+      "hal",
+      "pubmed"
+    ],
     "isni": [],
-    "rnsr": ["hal"],
+    "rnsr": [],
     "ppn": [],
     "articleNumber": [],
     "bibCode": [],
-    "eisbn": ["crossref"],
+    "eisbn": [
+      "sudoc",
+      "crossref",
+      "hal",
+      "pubmed"
+    ],
     "ensam": [],
     "ineris": [],
     "inspire": [],
@@ -55,19 +75,64 @@
     "sciencespo": [],
     "reportNumber": [],
     "cern": [],
-    "issue": [],
+    "issue": [
+      "sudoc",
+      "crossref",
+      "hal",
+      "pubmed"
+    ],
     "specialIssue": [],
     "meetingAbstractNumber": [],
-    "pageRange": ["crossref"],
+    "pageRange": [
+      "sudoc",
+      "crossref",
+      "hal",
+      "pubmed"
+    ],
     "source": [],
-    "title": ["crossref"],
-    "title.default": [],
-    "title.fr": [],
-    "title.en": [],
+    "title": [
+      "sudoc",
+      "crossref",
+      "hal",
+      "pubmed"
+    ],
+    "title.default": [
+      "sudoc",
+      "crossref",
+      "hal",
+      "pubmed"
+    ],
+    "title.fr": [
+      "sudoc",
+      "crossref",
+      "hal",
+      "pubmed"
+    ],
+    "title.en": [
+      "sudoc",
+      "crossref",
+      "hal",
+      "pubmed"
+    ],
     "title.meeting": [],
-    "title.monography": ["crossref"],
-    "title.journal": ["crossref"],
-    "volume": ["crossref"],
+    "title.monography": [
+      "sudoc",
+      "crossref",
+      "hal",
+      "pubmed"
+    ],
+    "title.journal": [
+      "sudoc",
+      "crossref",
+      "hal",
+      "pubmed"
+    ],
+    "volume": [
+      "sudoc",
+      "crossref",
+      "hal",
+      "pubmed"
+    ],
     "part": [],
     "supplement": [],
     "documentType": [],
@@ -82,8 +147,8 @@
     "abstract": [],
     "abstract.fr": [],
     "abstract.en": [],
-    "publicationDate": ["crossref"],
-    "electronicPublicationDate": ["crossref"],
+    "publicationDate": [],
+    "electronicPublicationDate": [],
     "xPublicationDate": [],
     "nearDuplicates": [],
     "nearDuplicatesDetectedBySimilarity": [],

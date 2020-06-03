@@ -23,7 +23,8 @@
               "sudoc"
             ]
           }
-        }
+        },
+        "isConditor": false
       },
       "result": {
         "equal": "docObjects not found"
@@ -63,7 +64,8 @@
               "sudoc"
             ]
           }
-        }
+        },
+        "isConditor": false
       },
       "result": {
         "equal": "docObjects with source not found"
@@ -104,7 +106,8 @@
               "sudoc"
             ]
           }
-        }
+        },
+        "isConditor": false
       },
       "result": {
         "equal": "docObject corresponding to one of given sources not found"
@@ -173,7 +176,8 @@
               "sudoc"
             ]
           }
-        }
+        },
+        "isConditor": false
       },
       "result": {
         "equal": "priorities not found"
@@ -238,12 +242,13 @@
           "keys": {
             "authors": [],
             "abstract.fr": [],
-            "abctract.en": []
+            "abstract.en": []
           }
-        }
+        },
+        "isConditor": false
       },
       "result": {
-        "equal": "{\"source\":\"hal\",\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.hal.en\"},\"origins\":{\"authors\":\"hal\",\"abstract.fr\":\"hal\",\"abctract.en\":\"hal\",\"sources\":[\"hal\"]}}"
+        "equal": "{\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"source\":\"hal\",\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.hal.en\"},\"origins\":{\"authors\":\"hal\",\"abstract.fr\":\"hal\",\"abstract.en\":\"hal\",\"sources\":[\"hal\"]}}"
       }
     },
     {
@@ -314,10 +319,11 @@
               "sudoc"
             ]
           }
-        }
+        },
+        "isConditor": false
       },
       "result": {
-        "equal": "{\"source\":\"hal\",\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"abstract\":{\"fr\":\"abstract.crossref.fr\",\"en\":\"abstract.pubmed.en\"},\"origins\":{\"authors\":\"hal\",\"abstract.fr\":\"crossref\",\"abstract.en\":\"pubmed\",\"sources\":[\"hal\",\"crossref\",\"pubmed\"]}}"
+        "equal": "{\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"source\":\"hal\",\"abstract\":{\"fr\":\"abstract.crossref.fr\",\"en\":\"abstract.pubmed.en\"},\"origins\":{\"authors\":\"hal\",\"abstract.fr\":\"crossref\",\"abstract.en\":\"pubmed\",\"sources\":[\"hal\",\"crossref\",\"pubmed\"]}}"
       }
     },
     {
@@ -385,10 +391,126 @@
               "sudoc"
             ]
           }
-        }
+        },
+        "isConditor": false
       },
       "result": {
-        "equal": "{\"source\":\"hal\",\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"abstract\":{\"fr\":\"abstract.crossref.fr\",\"en\":\"abstract.pubmed.en\"},\"origins\":{\"authors\":\"crossref\",\"abstract.fr\":\"crossref\",\"abstract.en\":\"pubmed\",\"sources\":[\"hal\",\"crossref\",\"pubmed\"]}}"
+        "equal": "{\"source\":\"hal\",\"abstract\":{\"fr\":\"abstract.crossref.fr\",\"en\":\"abstract.pubmed.en\"},\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"origins\":{\"authors\":\"crossref\",\"abstract.fr\":\"crossref\",\"abstract.en\":\"pubmed\",\"sources\":[\"hal\",\"crossref\",\"pubmed\"]}}"
+      }
+    },
+    {
+      "label": "Construction d'un notice unique (succès : priorisation globale pour 2 sources identitques & suppression des données non souhaitées)",
+      "arguments": {
+        "docObjects": [
+          {
+            "idConditor": "hal1",
+            "source": "hal",
+            "authors": [],
+            "abstract": {
+              "fr": "abstract.hal.fr"
+            }
+          },
+          {
+            "idConditor": "hal2",
+            "source": "hal",
+            "authors": [
+              "authors.hal.1",
+              "authors.hal.2"
+            ],
+            "abstract": {
+              "fr": "abstract.hal.fr",
+              "en": "abstract.hal.en"
+            }
+          }
+        ],
+        "rules": {
+          "priorities": [
+            "hal",
+            "crossref",
+            "pubmed",
+            "sudoc"
+          ],
+          "keys": {
+            "authors": [],
+            "abstract.fr": [
+              "crossref",
+              "pubmed",
+              "sudoc"
+            ],
+            "abstract.en": [
+              "pubmed",
+              "sudoc"
+            ]
+          }
+        },
+        "isConditor": false
+      },
+      "result": {
+        "equal": "{\"authors\":[\"authors.hal.1\",\"authors.hal.2\"],\"source\":\"hal\",\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.hal.en\"},\"origins\":{\"authors\":\"hal\",\"abstract.fr\":\"hal\",\"abstract.en\":\"hal\",\"sources\":[\"hal\"]}}"
+      }
+    },
+    {
+      "label": "Construction d'un notice unique (succès : priorisation conditor -> hal & no fulltext)",
+      "arguments": {
+        "docObjects": [
+          {
+            "idConditor": "hal",
+            "source": "hal",
+            "authors": [],
+            "abstract": {
+              "fr": "abstract.hal.fr"
+            },
+            "hasFulltext": false
+          },
+          {
+            "idConditor": "crossref",
+            "source": "crossref",
+            "authors": [
+              "authors.crossref.1",
+              "authors.crossref.2"
+            ],
+            "abstract": {
+              "fr": "abstract.crossref.fr",
+              "en": "abstract.crossref.en"
+            }
+          }
+        ],
+        "isConditor": true
+      },
+      "result": {
+        "equal": "{\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"source\":\"crossref\",\"abstract\":{\"fr\":\"abstract.crossref.fr\",\"en\":\"abstract.crossref.en\"},\"origins\":{\"authors\":\"crossref\",\"source\":\"crossref\",\"abstract\":\"crossref\",\"abstract.fr\":\"crossref\",\"abstract.en\":\"crossref\",\"sources\":[\"crossref\"]}}"
+      }
+    },
+    {
+      "label": "Construction d'un notice unique (succès : priorisation conditor -> hal & fulltext)",
+      "arguments": {
+        "docObjects": [
+          {
+            "idConditor": "hal",
+            "source": "hal",
+            "authors": [],
+            "abstract": {
+              "fr": "abstract.hal.fr"
+            },
+            "hasFulltext": true
+          },
+          {
+            "idConditor": "crossref",
+            "source": "crossref",
+            "authors": [
+              "authors.crossref.1",
+              "authors.crossref.2"
+            ],
+            "abstract": {
+              "fr": "abstract.crossref.fr",
+              "en": "abstract.crossref.en"
+            }
+          }
+        ],
+        "isConditor": true
+      },
+      "result": {
+        "equal": "{\"source\":\"hal\",\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.crossref.en\"},\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"origins\":{\"authors\":\"crossref\",\"source\":\"hal\",\"abstract\":\"hal\",\"abstract.fr\":\"hal\",\"abstract.en\":\"crossref\",\"sources\":[\"hal\",\"crossref\"]}}"
       }
     }
   ]
