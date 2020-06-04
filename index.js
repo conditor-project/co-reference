@@ -44,7 +44,7 @@ business.select = function (docObjects, rules = conditorRules.default, isCondito
   if (typeof rules.keys === "object")
     for (let key in rules.keys) {
       let currentRules = rules.priorities; // default value
-      if (typeof _.get(result, key) !== "undefined") properties[key] = currentRules[0];
+      if (typeof _.get(result, key) !== "undefined") properties[key] = result.source;
       if (Array.isArray(rules.keys[key]) && rules.keys[key].length > 0) currentRules = rules.keys[key]; // custom value
       for (let i = 0; i < currentRules.length; i++) {
         let source = currentRules[i];
