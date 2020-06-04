@@ -2,8 +2,8 @@
   "priorities": [
     "sudoc",
     "hal",
-    "crossref",
-    "pubmed"
+    "pubmed",
+    "crossref"
   ],
   "keys": {
     "fingerprint": [],

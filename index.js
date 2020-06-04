@@ -47,9 +47,9 @@ business.select = function (docObjects, rules = conditorRules.default, isCondito
       if (typeof _.get(result, key) !== "undefined") properties[key] = currentRules[0];
       if (Array.isArray(rules.keys[key]) && rules.keys[key].length > 0) currentRules = rules.keys[key]; // custom value
       for (let i = 0; i < currentRules.length; i++) {
-        if (mapping[key]) {
-          let source = currentRules[i],
-            value = sourcesManager.getProperty(source, key);
+        let source = currentRules[i];
+        if (mapping[key] && sourcesManager.hasSource(source)) {
+          let value = sourcesManager.getProperty(source, key);
           if (typeof value !== "undefined") {
             _.set(result, key, value);
             sources[source] = true;

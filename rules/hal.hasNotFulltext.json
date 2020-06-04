@@ -1,8 +1,8 @@
 {
   "priorities": [
     "sudoc",
-    "crossref",
     "pubmed",
+    "crossref",
     "hal"
   ],
   "keys": {
