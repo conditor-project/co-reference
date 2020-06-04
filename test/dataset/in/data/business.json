@@ -512,6 +512,50 @@
       "result": {
         "equal": "{\"source\":\"hal\",\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.crossref.en\"},\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"origins\":{\"authors\":\"crossref\",\"source\":\"hal\",\"abstract\":\"hal\",\"abstract.fr\":\"hal\",\"abstract.en\":\"crossref\",\"sources\":[\"hal\",\"crossref\"]}}"
       }
+    },
+    {
+      "label": "Construction d'un notice unique (succès : merge duplicates)",
+      "arguments": {
+        "docObjects": [
+          {
+            "idConditor": "hal:hal1",
+            "source": "hal",
+            "authors": [],
+            "duplicates": [
+              {
+                "idConditor": "crossref:crossref1",
+                "source": "crossref"
+              }
+            ],
+            "abstract": {
+              "fr": "abstract.hal.fr"
+            },
+            "hasFulltext": true
+          },
+          {
+            "idConditor": "crossref:crossref1",
+            "source": "crossref",
+            "authors": [
+              "authors.crossref.1",
+              "authors.crossref.2"
+            ],
+            "duplicates": [
+              {
+                "idConditor": "hal:hal1",
+                "source": "hal"
+              }
+            ],
+            "abstract": {
+              "fr": "abstract.crossref.fr",
+              "en": "abstract.crossref.en"
+            }
+          }
+        ],
+        "isConditor": true
+      },
+      "result": {
+        "equal": "{\"source\":\"hal\",\"duplicates\":[{\"idConditor\":\"crossref:crossref1\",\"source\":\"crossref\"},{\"idConditor\":\"hal:hal1\",\"source\":\"hal\"}],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.crossref.en\"},\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"origins\":{\"authors\":\"crossref\",\"source\":\"hal\",\"duplicates\":[\"hal\",\"crossref\"],\"abstract\":\"hal\",\"abstract.fr\":\"hal\",\"abstract.en\":\"crossref\",\"sources\":[\"hal\",\"crossref\"]}}"
+      }
     }
   ]
 }

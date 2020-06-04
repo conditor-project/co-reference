@@ -68,7 +68,10 @@
   "isDuplicate": false,
   "isDeduplicable": false,
   "hasTransDuplicate": false,
-  "duplicates": true,
+  "duplicates": {
+    "action": "merge",
+    "id": "idConditor"
+  },
   "duplicateRules": true,
   "idDuplicate": true,
   "idChain": true,
@@ -78,8 +81,14 @@
   "publicationDate": true,
   "electronicPublicationDate": true,
   "xPublicationDate": true,
-  "nearDuplicates": true,
-  "nearDuplicatesDetectedBySimilarity": true,
+  "nearDuplicates": {
+    "action": "merge",
+    "id": "idConditor"
+  },
+  "nearDuplicatesDetectedBySimilarity": {
+    "action": "merge",
+    "id": "idConditor"
+  },
   "isNearDuplicate": false,
   "creationDate": true,
   "hasFulltext": false,

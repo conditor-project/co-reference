@@ -28,7 +28,7 @@ business.select = function (docObjects, rules = conditorRules.default, isCondito
     }
     if (sourcesManager.hasSources()) return { err: true, msg: "docObjects with source not found", res: result };
   } else return { err: true, msg: "docObjects not found", res: result };
-  if (isConditor && sourcesManager.hasSource("hal") && !sourcesManager.getProperty("hal", "hasFulltext"))
+  if (isConditor && sourcesManager.hasSource("hal") && !sourcesManager.getPropertyOf("hal", "hasFulltext"))
     rules = conditorRules.noFulltext;
   if (typeof rules !== "undefined" && Array.isArray(rules.priorities) && rules.priorities.length > 0) {
     for (let i = 0; i < rules.priorities.length; i++) {
@@ -48,8 +48,8 @@ business.select = function (docObjects, rules = conditorRules.default, isCondito
       if (Array.isArray(rules.keys[key]) && rules.keys[key].length > 0) currentRules = rules.keys[key]; // custom value
       for (let i = 0; i < currentRules.length; i++) {
         let source = currentRules[i];
-        if (mapping[key] && sourcesManager.hasSource(source)) {
-          let value = sourcesManager.getProperty(source, key);
+        if (mapping[key] === true && sourcesManager.hasSource(source)) {
+          let value = sourcesManager.getPropertyOf(source, key);
           if (typeof value !== "undefined") {
             _.set(result, key, value);
             sources[source] = true;
@@ -61,6 +61,10 @@ business.select = function (docObjects, rules = conditorRules.default, isCondito
     }
   properties.sources = Object.keys(sources);
   result.origins = properties;
+  for (let key in mapping) {
+    if (typeof mapping[key] === "object" && !SourcesManager.isEmpty(result[key]))
+      result.origins[key] = result.origins.sources;
+  }
   return { err: false, msg: "success", res: result };
 };
 
