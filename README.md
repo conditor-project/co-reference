@@ -10,6 +10,8 @@ npm i --save co-reference
 
 ## Prérequis ##
 
+### Mapping ###
+
 Remplir le fichier [resources/mapping.json](https://github.com/conditor-project/co-reference/blob/master/resources/mapping.json).
 
 La structure de ce fichier est la suivante :
@@ -29,12 +31,29 @@ La structure de ce fichier est la suivante :
   "title.monography": true,
   "title.journal": true,
   ...
+  "duplicates": {
+    "action": "merge",
+    "id": "idConditor"
+  },
+  "nearDuplicates": {
+    "action": "merge",
+    "id": "idConditor"
+  },
+  "nearDuplicatesDetectedBySimilarity": {
+    "action": "merge",
+    "id": "idConditor"
+  },
+  ...
   "hasFulltext": false,
   "fulltextPath": false
 }
 ```
 
 Ce fichier permet de renseigner quel(s) champ(s) serotn ou non présent dans la notice de référence générée.
+
+Note : Pour les champs contenant un tableau (duplicates, nearDuplicates ou nearDuplicatesDetectedBySimilarity), il est possible d'indiquer au module de regrouper (merge) les données provenant de chaques sources. Une propriété quelconque (ici : l'idConditor) doit permettre de les discriminer afin de pouvoir les dédoublonner.
+
+### Rules ###
 
 Remplir les fichiers JSON contenant les règles de priorités (en s'inspirant du fichier [rules/default.json](https://github.com/conditor-project/co-reference/blob/master/rules/default.json)).
 
