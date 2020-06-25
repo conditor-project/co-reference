@@ -49,9 +49,9 @@ La structure de ce fichier est la suivante :
 }
 ```
 
-Ce fichier permet de renseigner quel(s) champ(s) serotn ou non présent dans la notice de référence générée.
+Ce fichier permet de renseigner quel(s) champ(s) seront ou non présents dans la notice de référence générée.
 
-Note : Pour les champs contenant un tableau (duplicates, nearDuplicates ou nearDuplicatesDetectedBySimilarity), il est possible d'indiquer au module de regrouper (merge) les données provenant de chaques sources. Une propriété quelconque (ici : l'idConditor) doit permettre de les discriminer afin de pouvoir les dédoublonner.
+Note : Pour les champs contenant un tableau (duplicates, nearDuplicates ou nearDuplicatesDetectedBySimilarity), il est possible d'indiquer au module de regrouper (merge) les données provenant de chaque source. Une propriété quelconque (ici : l'idConditor) doit permettre de les discriminer afin de pouvoir les dédoublonner.
 
 ### Rules ###
 
@@ -89,13 +89,13 @@ La structure de ce fichier est la suivante :
 
 La propriété :
 
-- "priorities" définie l'ordre de priorité par défaut. Il est appliqué pour toutes les propriétés de la notice de référence (ou notice unique)
+- "priorities" définit l'ordre de priorité par défaut. Il est appliqué pour toutes les propriétés de la notice de référence (ou notice unique)
 
-- "keys" definie un ordre de priorité différent pour une propriété souhaitée.
+- "keys" definit un ordre de priorité différent pour une propriété souhaitée.
 
 ## Utilisation ##
 
-Ce "package" permet uniquement de construire la notice de référence (ou notice unique). Il doit être intégré dans un code permettant l'accès au docObjects et aux fichiers "rules" (contenant les ordres de priorités).
+Ce "package" permet uniquement de construire la notice de référence (ou notice unique). Il doit être intégré dans un code permettant l'accès aux docObjects et aux fichiers "rules" (contenant les ordres de priorités).
 
 Exemple :
 
@@ -169,7 +169,7 @@ Je souhaite construire une notice de référence (ou notice unique) respectant l
 - Pour "l'abstract fr", prendre en priorité : "crossref" puis "pubmed" puis "sudoc"
 - Pour "l'abstract en" prendre en priorité : "pubmed" puis "sudoc"
 
-Je construit donc le fichier JSON suivant :
+Je construis donc le fichier JSON suivant :
 
 ```json
 {
@@ -197,7 +197,7 @@ Je construit donc le fichier JSON suivant :
 }
 ```
 
-J'obtiendrais le résultat suivant :
+J'obtiendrai le résultat suivant :
 
 ```json
 {
@@ -224,4 +224,4 @@ Notes :
 - La propriéte "source" renseigne la source de départ
 - La propriéte "origins" renseigne la source pour chaque propriété modifiée par co-reference
 - La propriété "origins.sources" contient les différentes sources utilisées pour la création de la notice de référence (ou notice unique)
-- En cas d'absence de données (ici : authors), le module vérifiera la présence de données dans les autres sources (selon les priorités définie).
+- En cas d'absence de données (ici : authors), le module vérifiera la présence de données dans les autres sources (selon les priorités définies).
