@@ -1,6 +1,7 @@
 {
   "priorities": [
-    "sudoc",
+    "sudoc-theses",
+    "sudoc-ouvrages",
     "hal",
     "pubmed",
     "crossref"
@@ -34,20 +35,23 @@
     "patentNumber": [],
     "utKey": [],
     "issn": [
-      "sudoc",
+      "sudoc-theses",
+      "sudoc-ouvrages",
       "crossref",
       "hal",
       "pubmed"
     ],
     "eissn": [
-      "sudoc",
+      "sudoc-theses",
+      "sudoc-ouvrages",
       "crossref",
       "hal",
       "pubmed"
     ],
     "xissn": [],
     "isbn": [
-      "sudoc",
+      "sudoc-theses",
+      "sudoc-ouvrages",
       "crossref",
       "hal",
       "pubmed"
@@ -58,7 +62,8 @@
     "articleNumber": [],
     "bibCode": [],
     "eisbn": [
-      "sudoc",
+      "sudoc-theses",
+      "sudoc-ouvrages",
       "crossref",
       "hal",
       "pubmed"
@@ -77,7 +82,8 @@
     "reportNumber": [],
     "cern": [],
     "issue": [
-      "sudoc",
+      "sudoc-theses",
+      "sudoc-ouvrages",
       "crossref",
       "hal",
       "pubmed"
@@ -85,51 +91,59 @@
     "specialIssue": [],
     "meetingAbstractNumber": [],
     "pageRange": [
-      "sudoc",
+      "sudoc-theses",
+      "sudoc-ouvrages",
       "crossref",
       "hal",
       "pubmed"
     ],
     "source": [],
     "title": [
-      "sudoc",
+      "sudoc-theses",
+      "sudoc-ouvrages",
       "crossref",
       "hal",
       "pubmed"
     ],
     "title.default": [
-      "sudoc",
+      "sudoc-theses",
+      "sudoc-ouvrages",
       "crossref",
       "hal",
       "pubmed"
     ],
     "title.fr": [
-      "sudoc",
+      "sudoc-theses",
+      "sudoc-ouvrages",
       "crossref",
       "hal",
       "pubmed"
     ],
     "title.en": [
-      "sudoc",
+      "sudoc-theses",
+      "sudoc-ouvrages",
       "crossref",
       "hal",
       "pubmed"
     ],
     "title.meeting": [],
     "title.monography": [
-      "sudoc",
+      "sudoc-theses",
+      "sudoc-ouvrages",
       "crossref",
       "hal",
       "pubmed"
     ],
     "title.journal": [
-      "sudoc",
+      "sudoc-theses",
+      "sudoc-ouvrages",
       "crossref",
       "hal",
       "pubmed"
     ],
     "volume": [
-      "sudoc",
+      "sudoc-theses",
+      "sudoc-ouvrages",
       "crossref",
       "hal",
       "pubmed"
