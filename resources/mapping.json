@@ -10,7 +10,6 @@
   "first3AuthorNamesWithInitials": false,
   "authorNames": true,
   "authors": true,
-  "enrichments" : true,
   "defenseOrganism": true,
   "doi": true,
   "pii": true,
