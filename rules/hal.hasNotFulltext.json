@@ -1,6 +1,7 @@
 {
   "priorities": [
-    "sudoc",
+    "sudoc-theses",
+    "sudoc-ouvrages",
     "pubmed",
     "crossref",
     "hal"
