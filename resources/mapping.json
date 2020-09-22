@@ -2,7 +2,9 @@
   "fingerprint": false,
   "idConditor": false,
   "sourceId": false,
-  "sourceUid": false,
+  "sourceUid": {
+    "action": "merge"
+  },
   "sessionName": false,
   "path": false,
   "teiBlob": false,

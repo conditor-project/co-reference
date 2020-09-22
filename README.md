@@ -21,7 +21,9 @@ La structure de ce fichier est la suivante :
   "fingerprint": false,
   "idConditor": false,
   "sourceId": false,
-  "sourceUid": false,
+  "sourceUid": {
+    "action": "merge"
+  },
   ...
   "title": true,
   "title.default": true,
@@ -51,7 +53,7 @@ La structure de ce fichier est la suivante :
 
 Ce fichier permet de renseigner quel(s) champ(s) seront ou non présents dans la notice de référence générée.
 
-Note : Pour les champs contenant un tableau (duplicates, nearDuplicates ou nearDuplicatesDetectedBySimilarity), il est possible d'indiquer au module de regrouper (merge) les données provenant de chaque source. Une propriété quelconque (ici : l'idConditor) doit permettre de les discriminer afin de pouvoir les dédoublonner.
+Note : Pour les champs contenant un tableau (duplicates, nearDuplicates ou nearDuplicatesDetectedBySimilarity), il est possible d'indiquer au module de regrouper (merge) les données provenant de chaque source. Une propriété quelconque (ici : l'idConditor) doit permettre de les discriminer afin de pouvoir les dédoublonner si les données à fusionner sont des objets.
 
 ### Rules ###
 

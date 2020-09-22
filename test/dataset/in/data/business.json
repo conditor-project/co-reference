@@ -514,7 +514,7 @@
       }
     },
     {
-      "label": "Construction d'un notice unique (succès : merge duplicates)",
+      "label": "Construction d'un notice unique (succès : merge duplicates with idConditor)",
       "arguments": {
         "docObjects": [
           {
@@ -555,6 +555,209 @@
       },
       "result": {
         "equal": "{\"source\":\"hal\",\"duplicates\":[{\"idConditor\":\"crossref:crossref1\",\"source\":\"crossref\"},{\"idConditor\":\"hal:hal1\",\"source\":\"hal\"}],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.crossref.en\"},\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"origins\":{\"authors\":\"crossref\",\"source\":\"hal\",\"duplicates\":[\"hal\",\"crossref\"],\"abstract\":\"hal\",\"abstract.fr\":\"hal\",\"abstract.en\":\"crossref\",\"sources\":[\"hal\",\"crossref\"]}}"
+      }
+    },
+    {
+      "label": "Construction d'un notice unique (succès : merge duplicates with idConditor case one empty duplicates)",
+      "arguments": {
+        "docObjects": [
+          {
+            "idConditor": "hal:hal1",
+            "source": "hal",
+            "authors": [],
+            "duplicates": [
+              {
+                "idConditor": "crossref:crossref1",
+                "source": "crossref"
+              }
+            ],
+            "abstract": {
+              "fr": "abstract.hal.fr"
+            },
+            "hasFulltext": true
+          },
+          {
+            "idConditor": "crossref:crossref1",
+            "source": "crossref",
+            "authors": [
+              "authors.crossref.1",
+              "authors.crossref.2"
+            ],
+            "duplicates": [
+              {
+                "idConditor": "hal:hal1",
+                "source": "hal"
+              }
+            ],
+            "abstract": {
+              "fr": "abstract.crossref.fr",
+              "en": "abstract.crossref.en"
+            }
+          },
+          {
+            "idConditor": "sudoc:sudoc1",
+            "source": "sudoc",
+            "authors": [],
+            "duplicates": [],
+            "abstract": {}
+          }
+        ],
+        "isConditor": true
+      },
+      "result": {
+        "equal": "{\"source\":\"hal\",\"duplicates\":[{\"idConditor\":\"crossref:crossref1\",\"source\":\"crossref\"},{\"idConditor\":\"hal:hal1\",\"source\":\"hal\"}],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.crossref.en\"},\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"origins\":{\"authors\":\"crossref\",\"source\":\"hal\",\"duplicates\":[\"hal\",\"crossref\"],\"abstract\":\"hal\",\"abstract.fr\":\"hal\",\"abstract.en\":\"crossref\",\"sources\":[\"hal\",\"crossref\"]}}"
+      }
+    },
+    {
+      "label": "Construction d'un notice unique (succès : merge duplicates with idConditor case same duplicates)",
+      "arguments": {
+        "docObjects": [
+          {
+            "idConditor": "hal:hal1",
+            "source": "hal",
+            "authors": [],
+            "duplicates": [
+              {
+                "idConditor": "sudoc:sudoc1",
+                "source": "sudoc"
+              }
+            ],
+            "abstract": {
+              "fr": "abstract.hal.fr"
+            },
+            "hasFulltext": true
+          },
+          {
+            "idConditor": "crossref:crossref1",
+            "source": "crossref",
+            "authors": [
+              "authors.crossref.1",
+              "authors.crossref.2"
+            ],
+            "duplicates": [
+              {
+                "idConditor": "sudoc:sudoc1",
+                "source": "sudoc"
+              }
+            ],
+            "abstract": {
+              "fr": "abstract.crossref.fr",
+              "en": "abstract.crossref.en"
+            }
+          }
+        ],
+        "isConditor": true
+      },
+      "result": {
+        "equal": "{\"source\":\"hal\",\"duplicates\":[{\"idConditor\":\"sudoc:sudoc1\",\"source\":\"sudoc\"}],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.crossref.en\"},\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"origins\":{\"authors\":\"crossref\",\"source\":\"hal\",\"duplicates\":[\"hal\",\"crossref\"],\"abstract\":\"hal\",\"abstract.fr\":\"hal\",\"abstract.en\":\"crossref\",\"sources\":[\"hal\",\"crossref\"]}}"
+      }
+    },
+    {
+      "label": "Construction d'un notice unique (succès : merge sourceUid)",
+      "arguments": {
+        "docObjects": [
+          {
+            "idConditor": "hal:hal1",
+            "sourceUid": "hal:hal1",
+            "source": "hal",
+            "authors": [],
+            "duplicates": [
+              {
+                "idConditor": "crossref:crossref1",
+                "source": "crossref"
+              }
+            ],
+            "abstract": {
+              "fr": "abstract.hal.fr"
+            },
+            "hasFulltext": true
+          },
+          {
+            "idConditor": "crossref:crossref1",
+            "sourceUid": "crossref:crossref1",
+            "source": "crossref",
+            "authors": [
+              "authors.crossref.1",
+              "authors.crossref.2"
+            ],
+            "duplicates": [
+              {
+                "idConditor": "hal:hal1",
+                "source": "hal"
+              }
+            ],
+            "abstract": {
+              "fr": "abstract.crossref.fr",
+              "en": "abstract.crossref.en"
+            }
+          }
+        ],
+        "isConditor": true
+      },
+      "result": {
+        "equal": "{\"sourceUid\":[\"hal:hal1\",\"crossref:crossref1\"],\"source\":\"hal\",\"duplicates\":[{\"idConditor\":\"crossref:crossref1\",\"source\":\"crossref\"},{\"idConditor\":\"hal:hal1\",\"source\":\"hal\"}],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.crossref.en\"},\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"origins\":{\"sourceUid\":[\"hal\",\"crossref\"],\"authors\":\"crossref\",\"source\":\"hal\",\"duplicates\":[\"hal\",\"crossref\"],\"abstract\":\"hal\",\"abstract.fr\":\"hal\",\"abstract.en\":\"crossref\",\"sources\":[\"hal\",\"crossref\"]}}"
+      }
+    },
+    {
+      "label": "Construction d'un notice unique (succès : merge sourceUid case same sourceUid)",
+      "arguments": {
+        "docObjects": [
+          {
+            "idConditor": "hal:hal1",
+            "sourceUid": "hal:hal1",
+            "source": "hal",
+            "authors": [],
+            "duplicates": [
+              {
+                "idConditor": "crossref:crossref1",
+                "source": "crossref"
+              }
+            ],
+            "abstract": {
+              "fr": "abstract.hal.fr"
+            },
+            "hasFulltext": true
+          },
+          {
+            "idConditor": "hal:hal1",
+            "sourceUid": "hal:hal1",
+            "source": "hal",
+            "authors": [],
+            "duplicates": [
+              {
+                "idConditor": "crossref:crossref1",
+                "source": "crossref"
+              }
+            ],
+            "abstract": {
+              "fr": "abstract.hal.fr"
+            },
+            "hasFulltext": true
+          },
+          {
+            "idConditor": "crossref:crossref1",
+            "sourceUid": "crossref:crossref1",
+            "source": "crossref",
+            "authors": [
+              "authors.crossref.1",
+              "authors.crossref.2"
+            ],
+            "duplicates": [
+              {
+                "idConditor": "hal:hal1",
+                "source": "hal"
+              }
+            ],
+            "abstract": {
+              "fr": "abstract.crossref.fr",
+              "en": "abstract.crossref.en"
+            }
+          }
+        ],
+        "isConditor": true
+      },
+      "result": {
+        "equal": "{\"sourceUid\":[\"hal:hal1\",\"crossref:crossref1\"],\"source\":\"hal\",\"duplicates\":[{\"idConditor\":\"crossref:crossref1\",\"source\":\"crossref\"},{\"idConditor\":\"hal:hal1\",\"source\":\"hal\"}],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.crossref.en\"},\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"origins\":{\"sourceUid\":[\"hal\",\"crossref\"],\"authors\":\"crossref\",\"source\":\"hal\",\"duplicates\":[\"hal\",\"crossref\"],\"abstract\":\"hal\",\"abstract.fr\":\"hal\",\"abstract.en\":\"crossref\",\"sources\":[\"hal\",\"crossref\"]}}"
       }
     }
   ]
