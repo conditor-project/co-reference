@@ -170,6 +170,20 @@
     "isNearDuplicate": [],
     "creationDate": [],
     "hasFulltext": [],
-    "fulltextPath": []
+    "fulltextPath": [],
+    "enrichments.oa.core": [
+      "sudoc-theses",
+      "sudoc-ouvrages",
+      "hal",
+      "crossref",
+      "pubmed"
+    ],
+    "enrichments.oa.unpaywall": [
+      "sudoc-theses",
+      "sudoc-ouvrages",
+      "hal",
+      "crossref",
+      "pubmed"
+    ]
   }
 }
