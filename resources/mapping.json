@@ -96,6 +96,8 @@
   "creationDate": true,
   "hasFulltext": false,
   "fulltextPath": true,
+  "enrichments": true,
+  "enrichments.oa": true,
   "enrichments.oa.core": true,
   "enrichments.oa.unpaywall": true
 }
