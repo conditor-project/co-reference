@@ -171,6 +171,20 @@
     "creationDate": [],
     "hasFulltext": [],
     "fulltextPath": [],
+    "enrichments": [
+      "sudoc-theses",
+      "sudoc-ouvrages",
+      "hal",
+      "crossref",
+      "pubmed"
+    ],
+    "enrichments.oa": [
+      "sudoc-theses",
+      "sudoc-ouvrages",
+      "hal",
+      "crossref",
+      "pubmed"    
+    ],
     "enrichments.oa.core": [
       "sudoc-theses",
       "sudoc-ouvrages",
