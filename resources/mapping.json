@@ -95,5 +95,7 @@
   "isNearDuplicate": false,
   "creationDate": true,
   "hasFulltext": false,
-  "fulltextPath": true
+  "fulltextPath": true,
+  "enrichments.oa.core": true,
+  "enrichments.oa.unpaywall": true
 }
