@@ -171,18 +171,6 @@
     "creationDate": [],
     "hasFulltext": [],
     "fulltextPath": [],
-    "classification":[],
-    "keywords":[],
-    "publisher": [
-      "sudoc-theses",
-      "sudoc-ouvrages",
-      "hal",
-      "crossref",
-      "pubmed"
-    ],
-    "language": [],
-    "funders":[],
-    "thesisAdvisor":[],
     "enrichments": [
       "sudoc-theses",
       "sudoc-ouvrages",
