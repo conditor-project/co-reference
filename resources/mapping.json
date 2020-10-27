@@ -97,8 +97,34 @@
   "hasFulltext": false,
   "fulltextPath": true,
   "enrichments": true,
-  "classification": true,
+  "classification.hal": {
+    "action": "merge"
+  },
+  "classification.tef": {
+    "action": "merge"
+  },
+  "classification.dewey": {
+    "action": "merge"
+  },
+  "classification.thesisDewey": {
+    "action": "merge"
+  },
   "keywords.fr.author": {
+    "action": "merge"
+  },
+  "keywords.fr.mesh": {
+    "action": "merge"
+  },
+  "keywords.fr.rameau": {
+    "action": "merge"
+  },
+  "keywords.en.author": {
+    "action": "merge"
+  },
+  "keywords.en.mesh": {
+    "action": "merge"
+  },
+  "keywords.undetermined": {
     "action": "merge"
   },
   "funders":true,
