@@ -99,12 +99,5 @@
   "enrichments": true,
   "enrichments.oa": true,
   "enrichments.oa.core": true,
-  "enrichments.oa.unpaywall": true,
-  "classification":true,
-  "keywords":true,
-  "funders":true,
-  "thesisAdvisor":true,
-  "publisher":true,
-  "language":true
-  
+  "enrichments.oa.unpaywall": true
 }
