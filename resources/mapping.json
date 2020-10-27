@@ -96,15 +96,12 @@
   "creationDate": true,
   "hasFulltext": false,
   "fulltextPath": true,
-  "enrichments": {
-    "action": "merge"
-  },
-  "classification": {
-    "action": "merge"
-  },
-  "keywords": {
-    "action": "merge"
-  },
+  "enrichments": true,
+  "enrichments.oa": true,
+  "enrichments.oa.core": true,
+  "enrichments.oa.unpaywall": true,
+  "classification":true,
+  "keywords":true,
   "funders":true,
   "thesisAdvisor":true,
   "publisher":true,
