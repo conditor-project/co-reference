@@ -828,6 +828,57 @@
       "result": {
         "equal": "{\"sourceUid\":[\"hal:hal1\",\"crossref:crossref1\"],\"source\":\"crossref\",\"enrichments\":{\"oa\":{\"unpaywall\":[\"crossref\"],\"core\":[\"crossref\"]},\"classifications\":{\"scopus\":[{\"level\":1,\"label\":\"crossref\"}],\"scienceMetrix\":[{\"level\":1,\"label\":\"crossref\"}]}},\"origins\":{\"sourceUid\":[\"crossref\"],\"source\":\"crossref\",\"sources\":[\"crossref\"]}}"
       }
+    },
+    {
+      "label": "Construction d'un notice unique (succès : merge keywords)",
+      "arguments": {
+        "docObjects": [
+          {
+            "idConditor": "hal:hal1",
+            "sourceUid": "hal:hal1",
+            "source": "hal",
+            "enrichments": {
+              "oa": {
+                "unpaywall": [
+                  "hal"
+                ],
+                "core": [
+                  "hal"
+                ]
+              }
+            },
+            "keywords": {
+              "fr": {
+                "author": ["test1", "test2"]
+              }
+            }
+          },
+          {
+            "idConditor": "crossref:crossref1",
+            "sourceUid": "crossref:crossref1",
+            "source": "crossref",
+            "enrichments": {
+              "oa": {
+                "unpaywall": [
+                  "crossref"
+                ],
+                "core": [
+                  "crossref"
+                ]
+              }
+            },
+            "keywords": {
+              "fr": {
+                "author": ["test2", "test3"]
+              }
+            }
+          }
+        ],
+        "isConditor": true
+      },
+      "result": {
+        "equal": "{\"sourceUid\":[\"hal:hal1\",\"crossref:crossref1\"],\"source\":\"crossref\",\"enrichments\":{\"oa\":{\"unpaywall\":[\"crossref\"],\"core\":[\"crossref\"]}},\"keywords\":{\"fr\":{\"author\":[\"test1\",\"test2\",\"test3\"]}},\"origins\":{\"sourceUid\":[\"crossref\"],\"source\":\"crossref\",\"sources\":[\"crossref\"]}}"
+      }
     }
   ]
 }
