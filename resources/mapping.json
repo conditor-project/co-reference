@@ -98,7 +98,9 @@
   "fulltextPath": true,
   "enrichments": true,
   "classification": true,
-  "keywords": true,
+  "keywords.fr.author": {
+    "action": "merge"
+  },
   "funders":true,
   "thesisAdvisor":true,
   "publisher":true,
