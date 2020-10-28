@@ -605,7 +605,7 @@
         "isConditor": true
       },
       "result": {
-        "equal": "{\"source\":\"hal\",\"duplicates\":[{\"idConditor\":\"crossref:crossref1\",\"source\":\"crossref\"},{\"idConditor\":\"hal:hal1\",\"source\":\"hal\"}],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.crossref.en\"},\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"origins\":{\"authors\":\"crossref\",\"source\":\"hal\",\"duplicates\":[\"hal\",\"crossref\"],\"abstract\":\"hal\",\"abstract.fr\":\"hal\",\"abstract.en\":\"crossref\",\"sources\":[\"hal\",\"crossref\"]}}"
+        "equal": "{\"source\":\"hal\",\"duplicates\":[{\"idConditor\":\"crossref:crossref1\",\"source\":\"crossref\"},{\"idConditor\":\"hal:hal1\",\"source\":\"hal\"}],\"abstract\":{\"fr\":\"abstract.hal.fr\",\"en\":\"abstract.crossref.en\"},\"authors\":[\"authors.crossref.1\",\"authors.crossref.2\"],\"origins\":{\"authors\":\"crossref\",\"source\":\"hal\",\"duplicates\":[\"hal\",\"crossref\",\"sudoc\"],\"abstract\":\"hal\",\"abstract.fr\":\"hal\",\"abstract.en\":\"crossref\",\"sources\":[\"hal\",\"crossref\",\"sudoc\"]}}"
       }
     },
     {
@@ -826,7 +826,7 @@
         "isConditor": true
       },
       "result": {
-        "equal": "{\"sourceUid\":[\"hal:hal1\",\"crossref:crossref1\"],\"source\":\"crossref\",\"enrichments\":{\"oa\":{\"unpaywall\":[\"crossref\"],\"core\":[\"crossref\"]},\"classifications\":{\"scopus\":[{\"level\":1,\"label\":\"crossref\"}],\"scienceMetrix\":[{\"level\":1,\"label\":\"crossref\"}]}},\"origins\":{\"sourceUid\":[\"crossref\"],\"source\":\"crossref\",\"sources\":[\"crossref\"]}}"
+        "equal": "{\"sourceUid\":[\"hal:hal1\",\"crossref:crossref1\"],\"source\":\"crossref\",\"enrichments\":{\"oa\":{\"unpaywall\":[\"crossref\"],\"core\":[\"crossref\"]},\"classifications\":{\"scopus\":[{\"level\":1,\"label\":\"crossref\"}],\"scienceMetrix\":[{\"level\":1,\"label\":\"crossref\"}]}},\"origins\":{\"sourceUid\":[\"hal\",\"crossref\"],\"source\":\"crossref\",\"sources\":[\"hal\",\"crossref\"]}}"
       }
     },
     {
@@ -877,7 +877,7 @@
         "isConditor": true
       },
       "result": {
-        "equal": "{\"sourceUid\":[\"hal:hal1\",\"crossref:crossref1\"],\"source\":\"crossref\",\"enrichments\":{\"oa\":{\"unpaywall\":[\"crossref\"],\"core\":[\"crossref\"]}},\"keywords\":{\"fr\":{\"author\":[\"test1\",\"test2\",\"test3\"]}},\"origins\":{\"sourceUid\":[\"crossref\"],\"source\":\"crossref\",\"sources\":[\"crossref\"]}}"
+        "equal": "{\"sourceUid\":[\"hal:hal1\",\"crossref:crossref1\"],\"source\":\"crossref\",\"enrichments\":{\"oa\":{\"unpaywall\":[\"crossref\"],\"core\":[\"crossref\"]}},\"keywords\":{\"fr\":{\"author\":[\"test1\",\"test2\",\"test3\"]}},\"origins\":{\"sourceUid\":[\"hal\",\"crossref\"],\"source\":\"crossref\",\"keywords.fr.author\":[\"hal\",\"crossref\"],\"sources\":[\"hal\",\"crossref\"]}}"
       }
     }
   ]

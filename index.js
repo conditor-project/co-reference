@@ -19,6 +19,7 @@ business.select = function (docObjects, rules = conditorRules.default, isCondito
     sources = {},
     properties = {},
     result = undefined;
+  if (typeof mapping !== "object") return { err: true, msg: "mapping not found", res: result };
   if (Array.isArray(docObjects) && docObjects.length > 0) {
     for (let i = 0; i < docObjects.length; i++) {
       let docObject = docObjects[i];
@@ -59,12 +60,19 @@ business.select = function (docObjects, rules = conditorRules.default, isCondito
         }
       }
     }
-  properties.sources = Object.keys(sources);
-  result.origins = properties;
+  let hasMerge = false;
   for (let key in mapping) {
-    if (typeof mapping[key] === "object" && !SourcesManager.isEmpty(result[key]))
-      result.origins[key] = result.origins.sources;
+    if (
+      typeof mapping[key] === "object" &&
+      mapping[key].action === "merge" &&
+      !SourcesManager.isEmpty(_.get(result, key))
+    ) {
+      properties[key] = sourcesManager.getSources();
+      hasMerge = true;
+    }
   }
+  properties.sources = hasMerge ? sourcesManager.getSources() : Object.keys(sources);
+  result.origins = properties;
   return { err: false, msg: "success", res: result };
 };
 
