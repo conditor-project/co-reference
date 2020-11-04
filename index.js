@@ -17,7 +17,7 @@ const business = {};
 business.select = function (docObjects, rules = conditorRules.default, isConditor = true) {
   let sourcesManager = new SourcesManager(),
     sources = {},
-    properties = {},
+    properties,
     result = undefined;
   if (typeof mapping !== "object") return { err: true, msg: "mapping not found", res: result };
   if (Array.isArray(docObjects) && docObjects.length > 0) {
@@ -34,7 +34,9 @@ business.select = function (docObjects, rules = conditorRules.default, isCondito
   if (typeof rules !== "undefined" && Array.isArray(rules.priorities) && rules.priorities.length > 0) {
     for (let i = 0; i < rules.priorities.length; i++) {
       if (sourcesManager.hasDocObjects(rules.priorities[i])) {
-        result = sourcesManager.merge(rules.priorities[i], mapping);
+        let merging = sourcesManager.merge(rules.priorities[i], mapping);
+        result = merging.data;
+        properties = merging.properties;
         sources[rules.priorities[i]] = true;
         break;
       }
@@ -45,7 +47,6 @@ business.select = function (docObjects, rules = conditorRules.default, isCondito
   if (typeof rules.keys === "object")
     for (let key in rules.keys) {
       let currentRules = rules.priorities; // default value
-      if (typeof _.get(result, key) !== "undefined") properties[key] = result.source;
       if (Array.isArray(rules.keys[key]) && rules.keys[key].length > 0) currentRules = rules.keys[key]; // custom value
       for (let i = 0; i < currentRules.length; i++) {
         let source = currentRules[i];
@@ -60,18 +61,7 @@ business.select = function (docObjects, rules = conditorRules.default, isCondito
         }
       }
     }
-  let hasMerge = false;
-  for (let key in mapping) {
-    if (
-      typeof mapping[key] === "object" &&
-      mapping[key].action === "merge" &&
-      !SourcesManager.isEmpty(_.get(result, key))
-    ) {
-      properties[key] = sourcesManager.getSources();
-      hasMerge = true;
-    }
-  }
-  properties.sources = hasMerge ? sourcesManager.getSources() : Object.keys(sources);
+  properties.sources = typeof properties.sources !== "undefined" ? properties.sources : Object.keys(sources);
   result.origins = properties;
   return { err: false, msg: "success", res: result };
 };
