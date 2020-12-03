@@ -130,5 +130,7 @@
   "funders":true,
   "thesisAdvisor":true,
   "publisher":true,
-  "language":true
+  "language":true,
+  "editor":true,
+  "publishingDirector":true
 }
