@@ -14,7 +14,7 @@
   "license": "SEE LICENCE IN License.txt",
   "dependencies": {
     "auto-tu": "^2.0.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mocha": "^7.1.2"
   }
 }
