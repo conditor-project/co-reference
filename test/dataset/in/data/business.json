@@ -879,6 +879,57 @@
       "result": {
         "equal": "{\"sourceUid\":[\"hal:hal1\",\"crossref:crossref1\"],\"source\":\"crossref\",\"enrichments\":{\"oa\":{\"unpaywall\":[\"crossref\"],\"core\":[\"crossref\"]}},\"keywords\":{\"fr\":{\"author\":[\"test1\",\"test2\",\"test3\"]}},\"origins\":{\"sourceUid\":[\"hal\",\"crossref\"],\"source\":\"crossref\",\"enrichments\":\"crossref\",\"keywords.fr.author\":[\"hal\",\"crossref\"],\"sources\":[\"hal\",\"crossref\"]}}"
       }
+    },
+    {
+      "label": "Construction d'un notice unique (succès : merge orcId)",
+      "arguments": {
+        "docObjects": [
+          {
+            "idConditor": "pubmed:pubmed1",
+            "sourceUid": "pubmed:pubmed1",
+            "source": "pubmed",
+            "authors": [
+              {
+                "forename": "Gérard ",
+                "surname": " André"
+              },
+              {
+                "forename": " Lea",
+                "surname": "De Marche ",
+                "orcId": "0000-0003-4093-3000"
+              },
+              {
+                "forename": "Charles"
+              }
+            ]
+          },
+          {
+            "idConditor": "crossref:crossref1",
+            "sourceUid": "crossref:crossref1",
+            "source": "crossref",
+            "authors": [
+              {
+                "forename": " Gerard",
+                "surname": "Andre ",
+                "orcId": "0000-0003-3946-1982"
+              },
+              {
+                "forename": "Léa ",
+                "surname": " De Marché"
+              },
+              {
+                "forename": "Charles",
+                "surname": "De Gaulle",
+                "orcId": "0000-0003-4236-2015"
+              }
+            ]
+          }
+        ],
+        "isConditor": true
+      },
+      "result": {
+        "equal": "{\"sourceUid\":[\"pubmed:pubmed1\",\"crossref:crossref1\"],\"authors\":[{\"forename\":\"Gérard \",\"surname\":\" André\",\"orcId\":\"0000-0003-3946-1982\"},{\"forename\":\" Lea\",\"surname\":\"De Marche \",\"orcId\":\"0000-0003-4093-3000\"},{\"forename\":\"Charles\"}],\"source\":\"pubmed\",\"origins\":{\"sourceUid\":[\"pubmed\",\"crossref\"],\"authors\":\"pubmed\",\"source\":\"pubmed\",\"sources\":[\"pubmed\",\"crossref\"]}}"
+      }
     }
   ]
 }

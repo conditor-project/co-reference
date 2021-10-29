@@ -32,6 +32,7 @@ business.select = function (docObjects, rules = conditorRules.default, isCondito
   if (isConditor && sourcesManager.hasSource("hal") && !sourcesManager.getPropertyOf("hal", "hasFulltext"))
     rules = conditorRules.noFulltext;
   if (typeof rules !== "undefined" && Array.isArray(rules.priorities) && rules.priorities.length > 0) {
+    sourcesManager.setPriorities(rules.priorities);
     for (let i = 0; i < rules.priorities.length; i++) {
       if (sourcesManager.hasDocObjects(rules.priorities[i])) {
         let merging = sourcesManager.merge(rules.priorities[i], mapping);
