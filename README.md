@@ -109,7 +109,7 @@ const reference = require("co-reference"),
 
 const myNoticeUnique = reference.select(docObjects, myRules); // Retourne un objet JSON
 
-// Avec le 3ème paramètre à false (true par défaut), aucune vérification ne sera faite sur le texte intégral des documents hal 
+// Avec le 3ème paramètre à false (true par défaut), aucune vérification ne sera faite sur le texte intégral des documents hal
 const myNoticeUnique = reference.select(docObjects, myRules, false); // Retourne un objet JSON
 ```
 
