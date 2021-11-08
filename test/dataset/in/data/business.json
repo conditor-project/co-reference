@@ -911,7 +911,9 @@
               {
                 "forename": " Gerard",
                 "surname": "Andre ",
-                "orcId": "0000-0003-3946-1982"
+                "enrichments": {
+                  "orcId": "0000-0003-3946-1982"
+                }
               },
               {
                 "forename": "Léa ",
