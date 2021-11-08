@@ -13,8 +13,10 @@
   "author": "INIST",
   "license": "CECILL-2.1",
   "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
     "auto-tu": "^2.0.1",
-    "lodash": "^4.17.15",
-    "mocha": "^7.1.2"
+    "mocha": "^9.1.3"
   }
 }
