@@ -4,7 +4,7 @@ const conditorRules = {
   noFulltext: require('./rules/hal.hasNotFulltext.json'),
 };
 const mapping = require('./resources/mapping.json');
-const SourcesManager = require('./lib/sourcesManager.js');
+const SourcesManager = require('./lib/SourcesManager.js');
 const _ = require('lodash');
 
 const business = {};
