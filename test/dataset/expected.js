@@ -1,4 +1,4 @@
-const globalPriority = {
+const globalPriorities = {
   authors: ['authors.hal.1', 'authors.hal.2'],
   source: 'hal',
   abstract: { fr: 'abstract.hal.fr', en: 'abstract.hal.en' },
@@ -12,7 +12,7 @@ const globalPriority = {
   },
 };
 
-const globalAndCustomPriority = {
+const globalAndCustomPriorities = {
   authors: ['authors.hal.1', 'authors.hal.2'],
   source: 'hal',
   abstract: {
@@ -29,7 +29,7 @@ const globalAndCustomPriority = {
   },
 };
 
-const globalAndCustomPriorityButNoData = {
+const globalAndCustomPrioritiesButNoData = {
   source: 'hal',
   abstract: { fr: 'abstract.crossref.fr', en: 'abstract.pubmed.en' },
   authors: ['authors.crossref.1', 'authors.crossref.2'],
@@ -43,7 +43,7 @@ const globalAndCustomPriorityButNoData = {
   },
 };
 
-const globalPriorityAndDeleteUnwantedData = {
+const globalPrioritiesAndDeleteUnwantedData = {
   authors: ['authors.hal.1', 'authors.hal.2'],
   source: 'hal',
   abstract: { fr: 'abstract.hal.fr', en: 'abstract.hal.en' },
@@ -260,10 +260,10 @@ const mergeOrcId = {
 };
 
 module.exports = {
-  globalPriority,
-  globalAndCustomPriority,
-  globalAndCustomPriorityButNoData,
-  globalPriorityAndDeleteUnwantedData,
+  globalPriorities,
+  globalAndCustomPriorities,
+  globalAndCustomPrioritiesButNoData,
+  globalPrioritiesAndDeleteUnwantedData,
   defaultPrioritiesAndHalWithoutFulltext,
   defaultPrioritiesAndHalWithFulltext,
   mergeDuplicates,

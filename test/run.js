@@ -8,92 +8,92 @@ const business = require('../index');
 
 describe('index.js', () => {
   describe('#select()', () => {
-    it('Construction d\'une notice unique (échec : aucun docObjects n\'a été trouvé)', (done) => {
+    it('Fail: no docObjects were found', (done) => {
       expectError(testData.noDocObjects, 'docObjects not found');
       done();
     });
 
-    it('Construction d\'une notice unique (échec : aucun docObjects ayant une source n\'a été trouvé)', (done) => {
+    it('Fail: no docObjects with a source were found', (done) => {
       expectError(testData.noDocObjectsWithSource, 'docObjects with source not found');
       done();
     });
 
-    it('Construction d\'une notice unique (échec : aucun docObjects corerspondant à une source n\'a été trouvé)', (done) => {
+    it('Fail: no docObjects with a known source were found', (done) => {
       expectError(testData.noDocObjectsWithKnownSource, 'docObject corresponding to one of given sources not found');
       done();
     });
 
-    it('Construction d\'une notice unique (échec : aucune priorisation des sources n\'a été trouvée)', (done) => {
+    it('Fail: no priorities were found', (done) => {
       expectError(testData.noPriorities, 'priorities not found');
       done();
     });
 
-    it('Construction d\'une notice unique (succès : priorisation globale)', (done) => {
-      expectSuccess(testData.globalPriority, expected.globalPriority);
+    it('Success: global priorities)', (done) => {
+      expectSuccess(testData.globalPriorities, expected.globalPriorities);
       done();
     });
 
-    it('Construction d\'une notice unique (succès : priorisation globale + personnalisée)', (done) => {
-      expectSuccess(testData.globalAndCustomPriority, expected.globalAndCustomPriority);
+    it('Success: global and custom priorities', (done) => {
+      expectSuccess(testData.globalAndCustomPriorities, expected.globalAndCustomPriorities);
       done();
     });
 
-    it('Construction d\'une notice unique (succès : priorisation globale + personnalisée & absence de données)', (done) => {
-      expectSuccess(testData.globalAndCustomPriorityButNoData, expected.globalAndCustomPriorityButNoData);
+    it('Success: global and custom priorities but no data', (done) => {
+      expectSuccess(testData.globalAndCustomPrioritiesButNoData, expected.globalAndCustomPrioritiesButNoData);
       done();
     });
 
-    it('Construction d\'une notice unique (succès : priorisation globale pour 2 sources identitques & suppression des données non souhaitées)', (done) => {
-      expectSuccess(testData.globalPriorityAndDeleteUnwantedData, expected.globalPriorityAndDeleteUnwantedData);
+    it('Success: global priorities for 2 identical sources and and delete unwanted data', (done) => {
+      expectSuccess(testData.globalPrioritiesAndDeleteUnwantedData, expected.globalPrioritiesAndDeleteUnwantedData);
       done();
     });
 
-    it('Construction d\'une notice unique (succès : priorisation conditor -> hal & no fulltext)', (done) => {
+    it('Success: default prorities and Hal without a fulltext', (done) => {
       expectSuccess(testData.defaultPrioritiesAndHalWithoutFulltext, expected.defaultPrioritiesAndHalWithoutFulltext);
       done();
     });
 
-    it('Construction d\'une notice unique (succès : priorisation conditor -> hal & fulltext)', (done) => {
+    it('Success: default prorities and Hal with a fulltext', (done) => {
       expectSuccess(testData.defaultPrioritiesAndHalWithFulltext, expected.defaultPrioritiesAndHalWithFulltext);
       done();
     });
 
-    it('Construction d\'une notice unique (succès : merge duplicates with idConditor)', (done) => {
+    it('Success: merge duplicates with idConditor', (done) => {
       expectSuccess(testData.mergeDuplicates, expected.mergeDuplicates);
       done();
     });
 
-    it('Construction d\'une notice unique (succès : merge duplicates with idConditor case one empty duplicate)', (done) => {
+    it('Success: merge duplicates with idConditor (one empty duplicate)', (done) => {
       expectSuccess(testData.mergeDuplicatesWithOneEmptyDuplicate, expected.mergeDuplicatesWithOneEmptyDuplicate);
       done();
     });
 
-    it('Construction d\'une notice unique (succès : merge duplicates with idConditor case one empty duplicate)', (done) => {
+    it('Success: merge duplicates with idConditor (identical duplicates)', (done) => {
       expectSuccess(testData.mergeDuplicatesWithSameDuplicates, expected.mergeDuplicatesWithSameDuplicates);
       done();
     });
 
-    it('Construction d\'une notice unique (succès : merge sourceUid)', (done) => {
+    it('Success: merge sourceUid', (done) => {
       expectSuccess(testData.mergeSourceUid, expected.mergeSourceUid);
       done();
     });
 
-    it('Construction d\'une notice unique (succès : merge sourceUid case same sourceUid)', (done) => {
+    it('Success: merge sourceUid (same sourceUid)', (done) => {
       expectSuccess(testData.mergeSourceUidButSameSourceUid, expected.mergeSourceUidButSameSourceUid);
       done();
     });
 
-    it('Construction d\'une notice unique (succès : merge enrichments)', (done) => {
+    it('Success: merge enrichments', (done) => {
       expectSuccess(testData.mergeEnrichments, expected.mergeEnrichments);
       done();
     });
 
-    it('Construction d\'une notice unique (succès : merge keywords)', (done) => {
+    it('Success: merge keywords', (done) => {
       expectSuccess(testData.mergeKeywords, expected.mergeKeywords);
       done();
     });
 
-    it('Construction d\'une notice unique (succès : merge orcId)', (done) => {
+    it('Success: merge orcId', (done) => {
       expectSuccess(testData.mergeOrcId, expected.mergeOrcId);
       done();
     });

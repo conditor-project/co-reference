@@ -161,7 +161,7 @@ const noPriorities = {
   isConditor: false,
 };
 
-const globalPriority = {
+const globalPriorities = {
   docObjects: [
     {
       source: 'hal',
@@ -224,7 +224,7 @@ const globalPriority = {
   isConditor: false,
 };
 
-const globalAndCustomPriority = {
+const globalAndCustomPriorities = {
   docObjects: [
     {
       source: 'hal',
@@ -294,7 +294,7 @@ const globalAndCustomPriority = {
   isConditor: false,
 };
 
-const globalAndCustomPriorityButNoData = {
+const globalAndCustomPrioritiesButNoData = {
   docObjects: [
     {
       source: 'hal',
@@ -361,7 +361,7 @@ const globalAndCustomPriorityButNoData = {
   isConditor: false,
 };
 
-const globalPriorityAndDeleteUnwantedData = {
+const globalPrioritiesAndDeleteUnwantedData = {
   docObjects: [
     {
       idConditor: 'hal1',
@@ -834,10 +834,10 @@ module.exports = {
   noDocObjectsWithSource,
   noDocObjectsWithKnownSource,
   noPriorities,
-  globalPriority,
-  globalAndCustomPriority,
-  globalAndCustomPriorityButNoData,
-  globalPriorityAndDeleteUnwantedData,
+  globalPriorities,
+  globalAndCustomPriorities,
+  globalAndCustomPrioritiesButNoData,
+  globalPrioritiesAndDeleteUnwantedData,
   defaultPrioritiesAndHalWithoutFulltext,
   defaultPrioritiesAndHalWithFulltext,
   mergeDuplicates,
