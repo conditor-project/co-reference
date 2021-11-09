@@ -16,7 +16,7 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "auto-tu": "^2.0.1",
+    "chai": "^4.3.4",
     "eslint": "^7.32.0",
     "eslint-config-semistandard": "^16.0.0",
     "eslint-config-standard": "^16.0.3",
