@@ -57,15 +57,16 @@ business.select = (docObjects, rules = conditorRules.default, isConditor = true)
     if (SourceManager.isNonEmptyArray(rules.keys[key])) currentRules = rules.keys[key]; // custom value
 
     for (const source of currentRules) {
-      if (mapping[key] === true && sourceManager.hasSource(source)) {
-        const value = sourceManager.getPropertyOf(source, key);
-        if (value == null) continue;
+      if (mapping[key] !== true || !sourceManager.hasSource(source)) continue;
 
-        _.set(result, key, value);
-        sources[source] = true;
-        properties[key] = source;
-        break;
-      }
+      const value = sourceManager.getPropertyOf(source, key);
+      if (value == null) continue;
+
+      _.set(result, key, value);
+      sources[source] = true;
+      properties[key] = source;
+
+      break;
     }
   }
 
