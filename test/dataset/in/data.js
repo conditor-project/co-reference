@@ -820,7 +820,7 @@ const mergeOrcId = {
         },
         {
           forename: 'Charles',
-          surname: 'De Gaulle',
+          surname: 'Attend',
           orcId: '0000-0003-4236-2015',
         },
       ],
