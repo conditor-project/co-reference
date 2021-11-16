@@ -1,22 +1,18 @@
 # co-reference
-Fonctions permettant de construire des notices de référence (ou notice unique)
+Library to build reference records (or unified records).
 
-## Installation ##
-
-
-```sh
-npm i --save co-reference
+## Install
+```
+npm install co-reference
 ```
 
-## Prérequis ##
+## Prerequisites
 
-### Mapping ###
+### Mapping
+Complete the [resources/mapping.json file](./resources/mapping.json).
 
-Remplir le fichier [resources/mapping.json](https://github.com/conditor-project/co-reference/blob/master/resources/mapping.json).
-
-La structure de ce fichier est la suivante :
-
-```json
+This JSON file's structure is as follows:
+```JSON
 {
   "fingerprint": false,
   "idConditor": false,
@@ -24,7 +20,7 @@ La structure de ce fichier est la suivante :
   "sourceUid": {
     "action": "merge"
   },
-  ...
+  // ...
   "title": true,
   "title.default": true,
   "title.fr": true,
@@ -32,7 +28,7 @@ La structure de ce fichier est la suivante :
   "title.meeting": true,
   "title.monography": true,
   "title.journal": true,
-  ...
+  // ...
   "duplicates": {
     "action": "merge",
     "id": "idConditor"
@@ -45,23 +41,20 @@ La structure de ce fichier est la suivante :
     "action": "merge",
     "id": "idConditor"
   },
-  ...
+  // ...
   "hasFulltext": false,
   "fulltextPath": false
 }
 ```
+This file describes the fields that will be present in the generated reference record.
 
-Ce fichier permet de renseigner quel(s) champ(s) seront ou non présents dans la notice de référence générée.
+**Note**: For fields with an array value (`duplicates`, `nearDuplicates` or `nearDuplicatesDetectedBySimilarity`), `co-reference` can merge the data coming from all sources. A property (`idConditor` in the example above) must be used to discriminate the values and remove potential duplicates if the values are objects.
 
-Note : Pour les champs contenant un tableau (duplicates, nearDuplicates ou nearDuplicatesDetectedBySimilarity), il est possible d'indiquer au module de regrouper (merge) les données provenant de chaque source. Une propriété quelconque (ici : l'idConditor) doit permettre de les discriminer afin de pouvoir les dédoublonner si les données à fusionner sont des objets.
+### Rules
+Complete the JSON files describing the priority rules (example: [rules/default.json](./rules/default.json)).
 
-### Rules ###
-
-Remplir les fichiers JSON contenant les règles de priorités (en s'inspirant du fichier [rules/default.json](https://github.com/conditor-project/co-reference/blob/master/rules/default.json)).
-
-La structure de ce fichier est la suivante :
-
-```json
+This JSON file's structure is as follows:
+```JSON
 {
   "priorities": [
     "hal",
@@ -70,54 +63,47 @@ La structure de ce fichier est la suivante :
     "sudoc"
   ],
   "keys": {
-    "fingerprint": [...],
-    "idConditor": [...],
-    "sourceId": [...],
-    "sourceUid": [...],
-    ...
-    "title": [...],
-    "title.default": [...],
-    "title.fr": [...],
-    "title.en": [...],
-    "title.meeting": [...],
-    "title.monography": [...],
-    "title.journal": [...],
-    ...
-    "hasFulltext": [...],
-    "fulltextPath": [...]
+    "fingerprint": [/*...*/],
+    "idConditor": [/*...*/],
+    "sourceId": [/*...*/],
+    "sourceUid": [/*...*/],
+    // ...
+    "title": [/*...*/],
+    "title.default": [/*...*/],
+    "title.fr": [/*...*/],
+    "title.en": [/*...*/],
+    "title.meeting": [/*...*/],
+    "title.monography": [/*...*/],
+    "title.journal": [/*...*/],
+    // ...
+    "hasFulltext": [/*...*/],
+    "fulltextPath": [/*...*/]
   }
 }
 ```
 
-La propriété :
+The priority mechanism:
+- `priorities` defines the default priority order. It is applied to every field without a specific priority order.
+- `keys.<field>` defines a specific priority order for `<field>`. Use an empty array (`[]`) to tell `co-reference` to use the default priority order.
 
-- "priorities" définit l'ordre de priorité par défaut. Il est appliqué pour toutes les propriétés de la notice de référence (ou notice unique)
+## Usage
+This library strictly builds the reference record. It must be integrated in an environment with direct access to the `docObject`s and the JSON file with the rules.
 
-- "keys" definit un ordre de priorité différent pour une propriété souhaitée.
+Example:
+```JS
+const reference = require('co-reference');
+const rules = require('./myCustomFile.json');
+const docObjects = [{...}, {...}, {...}];
 
-## Utilisation ##
+const firstReferenceRecord = reference.select(docObjects, rules);
 
-Ce "package" permet uniquement de construire la notice de référence (ou notice unique). Il doit être intégré dans un code permettant l'accès aux docObjects et aux fichiers "rules" (contenant les ordres de priorités).
-
-Exemple :
-
-```js
-
-const reference = require("co-reference"),
-  myRules = require("./myCustomFile.json"), // Lecture du fichier JSON contenant les ordres de priorités
-  docObjects = [{...}, {...}, ...]; // Liste des mes docObjects.
-
-const myNoticeUnique = reference.select(docObjects, myRules); // Retourne un objet JSON
-
-// Avec le 3ème paramètre à false (true par défaut), aucune vérification ne sera faite sur le texte intégral des documents hal 
-const myNoticeUnique = reference.select(docObjects, myRules, false); // Retourne un objet JSON
+// With the third parameter set to false (true by default), no verification will be done on the full text of documents coming from Hal.
+const secondReferenceRecord = reference.select(docObjects, rules, false);
 ```
 
-## Exemple ##
-
-Je dispose de la liste des documents suivants :
-
-```json
+## Example
+Considering the following list of documents:
+```JSON
 [
   {
     "source": "hal",
@@ -162,18 +148,15 @@ Je dispose de la liste des documents suivants :
   }
 ]
 ```
+**Note: The `docObject`s used to create the reference record MUST contain a `source` field.**
 
-**Note : les docObjects utilisés pour la création de la notice de référence (ou notice unique) doivent impérativement disposer d'une propriété "source"**
+I want to build a reference record according to the following rules:
+- By default, use data coming from "hal", then "crossref", then "pubmed" and finally "sudoc".
+- For `abstract.fr`, use data coming from "crossref", then "pubmed" and finally "sudoc".
+- For `abstract.en`, use data coming from "pubmed", then "sudoc".
 
-Je souhaite construire une notice de référence (ou notice unique) respectant les règles suivantes :
-
-- Par défaut, prendre en priorité les données de la source : "hal" puis "crossref" puis "pubmed" puis "sudoc"
-- Pour "l'abstract fr", prendre en priorité : "crossref" puis "pubmed" puis "sudoc"
-- Pour "l'abstract en" prendre en priorité : "pubmed" puis "sudoc"
-
-Je construis donc le fichier JSON suivant :
-
-```json
+I, thus, use the following JSON file:
+```JSON
 {
   "priorities": [
     "hal",
@@ -199,9 +182,8 @@ Je construis donc le fichier JSON suivant :
 }
 ```
 
-J'obtiendrai le résultat suivant :
-
-```json
+Which will give me the following result:
+```JSON
 {
   "source": "hal",
   "authors": [
@@ -210,20 +192,23 @@ J'obtiendrai le résultat suivant :
   ],
   "abstract": {
     "fr": "abstract.crossref.fr",
-    "en":"abstract.pubmed.en"
+    "en": "abstract.pubmed.en"
   },
   "origins": {
-    "authors":"crossref",
-    "abstract.fr":"crossref",
-    "abstract.en":"pubmed",
-    "sources":["hal","crossref","pubmed"]
+    "authors": "crossref",
+    "abstract.fr": "crossref",
+    "abstract.en": "pubmed",
+    "sources": [
+      "hal",
+      "crossref",
+      "pubmed"
+    ]
   }
 }
 ```
 
-Notes :
-
-- La propriéte "source" renseigne la source de départ
-- La propriéte "origins" renseigne la source pour chaque propriété modifiée par co-reference
-- La propriété "origins.sources" contient les différentes sources utilisées pour la création de la notice de référence (ou notice unique)
-- En cas d'absence de données (ici : authors), le module vérifiera la présence de données dans les autres sources (selon les priorités définies).
+Description:
+- `source`: the base source
+- `origins.<field>`: the source that was modified by `co-reference` for `<field>`
+- `origins.sources`: an array compiling all the sources used in the reference record
+- If the source on top of the priority list has no data for a field (in our example, the prioritized source (hal) has no `authors`), `co-reference` will go down the priority list until it finds a source with data for this field.
