@@ -2,12 +2,13 @@
 /* eslint-disable no-undef */
 
 const { expect } = require('chai');
-const testData = require('./dataset/in/data');
-const expected = require('./dataset/expected');
-const business = require('../index');
+const { select } = require('../index');
 
 describe('index.js', () => {
   describe('#select()', () => {
+    const testData = require('./dataset/in/select');
+    const expected = require('./dataset/expected/select');
+
     it('Fail: no docObjects were found', (done) => {
       expectError(testData.noDocObjects, 'docObjects not found');
       done();
@@ -106,7 +107,7 @@ describe('index.js', () => {
  * @param {object} expectedResult The expect result
  */
 function expectSuccess (inputData, expectedResult) {
-  const result = business.select(inputData.docObjects, inputData.rules, inputData.isConditor);
+  const result = select(inputData.docObjects, inputData.rules, inputData.isConditor);
   expect(result.err).to.be.false;
   expect(result.msg).to.be.equal('success');
   expect(result.res).to.eql(expectedResult);
@@ -118,7 +119,7 @@ function expectSuccess (inputData, expectedResult) {
  * @param {string} expectedErrorMessage The expect error message
  */
 function expectError (inputData, expectedErrorMessage) {
-  const result = business.select(inputData.docObjects, inputData.rules, inputData.isConditor);
+  const result = select(inputData.docObjects, inputData.rules, inputData.isConditor);
   expect(result.err).to.be.true;
   expect(result.msg).to.be.equal(expectedErrorMessage);
   expect(result.res).to.be.undefined;
